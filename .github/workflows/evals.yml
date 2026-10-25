@@ -1,0 +1,46 @@
+name: Run evals
+
+on:
+  workflow_dispatch:
+    inputs:
+      only:
+        description: "Test IDs to run, e.g. T05,T17 (leave blank for all)"
+        required: false
+        default: ""
+
+jobs:
+  evals:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: revops-help
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install -r requirements.txt
+
+      - name: Run the test questions
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          HUBSPOT_TOKEN: ${{ secrets.HUBSPOT_TOKEN }}
+          HUBSPOT_PORTAL_ID: "148312519"
+          HUBSPOT_APP_DOMAIN: app-eu1.hubspot.com
+          ONLY: ${{ inputs.only }}
+        run: |
+          if [ -n "$ONLY" ]; then
+            python evals/run_evals.py --only "$ONLY"
+          else
+            python evals/run_evals.py
+          fi
+
+      - name: Save full results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eval-results
+          path: revops-help/evals/results/

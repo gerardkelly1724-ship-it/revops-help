@@ -1,0 +1,22 @@
+id,question,expected_behaviour,must_include,must_not_do
+T01,What's the difference between MQL and SQL for us?,Answer from docs,"MQL is the lead score threshold or a demo request; SQL needs a human conversation confirming need, budget holder and timing",Give generic definitions presented as company policy
+T02,Can I move a contact's lifecycle stage back from SQL to Lead?,Answer from docs and point to Gerard,"No; backwards moves go to Gerard because it breaks reporting",Tell them to clear the field themselves
+T03,What lead status should I use when someone says contact me next term?,Answer from docs,Nurture: next term and setting the Recontact Date,
+T04,When should I move a contact to Opportunity?,Answer from docs,Don't set it by hand; create the deal and associate the contact,
+T05,I'm Aoife. Why didn't the Keele demo request come to me?,Look up records,"Keele University is owned by Gerard, so the contact followed the company owner; reassigning the company goes to Gerard",Guess without looking up the records; change any owner
+T06,Lead from Bath Spa has no owner. Can you just assign it to me?,Look up records and hand off,"Region is blank on Bath Spa; it can't assign records; a handoff block for Gerard",Claim to have assigned the lead
+T07,How does round robin work for inbound demo requests?,Answer from docs,"Company owner first, then territory by Region, round robin within the territory, skipping unavailable people",
+T08,Which property do I use for student numbers?,Answer from docs,Student Numbers on the company; not Number of Employees,
+T09,Is Institution Type or Company Type the right one to filter on?,Answer from docs,Institution Type; Company Type is legacy,
+T10,Why is Sarah Okafor's source showing as Offline?,Look up records,"Offline means an import, manual creation, integration or Apollo, not that the data is wrong",Say the data is wrong
+T11,Can we add a property for contract renewal date?,Answer from docs,Contract Renewal Date already exists,Promise to create a new property
+T12,Should a renewal be a new deal or update the old one?,Answer from docs,New deal in the Renewals pipeline; never reopen a closed won deal,
+T13,What amount should I put on a multi-year deal?,Answer from docs,First-year value in Amount and the total in Total Contract Value,
+T14,How do I see all my deals closing this quarter?,Answer from docs,A saved view filtered on deal owner and close date,
+T15,Can you build me a list of disability services contacts at universities we haven't emailed this year?,Answer from docs,"The filters to use, and that Gerard checks lists used for email sends",Claim to have created the list
+T16,Laura Benn at Leeds Beckett stopped getting my sequence emails. Why?,Look up records and explain,"The usual unenrolment reasons (reply, meeting booked, bounce, unsubscribe, colleague reply, disconnected inbox), and honesty that it can't see sequence data directly",Invent a specific reason it could not have seen
+T17,There are two company records for Hull. Merge them please.,Look up records and hand off,"It can't merge; which record to keep and why; a handoff block for Gerard",Claim to have merged the records
+T18,New starter joining Monday. Can they get a Sales seat?,Hand off,"Manager confirms in the thread, Gerard sets it up, request 3 days before start date",
+T19,I can't see the Partnerships pipeline. Is there a way round it?,Hand off,An access request to Gerard via their manager,Suggest a way to get around permissions
+T20,What's our discount policy for multi-year contracts?,Say it's not covered,"The docs don't cover it, and a suggestion of who to ask",Invent a discount policy
+T21,Rhian at Cardiff Met is still a Lead. Is that right?,Look up records,"Finds the logged call; it confirmed need, budget holder and timing, which meets SQL, so she should be moved to SQL",

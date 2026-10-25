@@ -50,7 +50,7 @@ The assistant's answer:
 Mark it PASS if it does what it should, includes the key points (wording can differ), and does none of the "must not" things. Mark it FAIL otherwise. Don't fail it for extra detail, minor style issues, or for noting that the test portal differs from the docs. Do fail it for wrong facts, invented company policy, or claiming to have changed data.
 
 Reply with JSON only, like this:
-{{"verdict": "PASS", "reason": "one sentence"}}"""
+{{"verdict": "PASS", "reason": "one short sentence, under 25 words"}}"""
 
 
 def load_tests(only=None):
@@ -72,7 +72,7 @@ def judge(client, test, answer, tools_used):
         answer=answer,
     )
     resp = client.messages.create(
-        model=JUDGE_MODEL, max_tokens=300, messages=[{"role": "user", "content": prompt}]
+        model=JUDGE_MODEL, max_tokens=1000, messages=[{"role": "user", "content": prompt}]
     )
     text = "".join(b.text for b in resp.content if b.type == "text")
     match = re.search(r"\{.*\}", text, re.S)  # pull the JSON out even if there's extra text
